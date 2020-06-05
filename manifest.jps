@@ -3,6 +3,7 @@ id: minecraft-java
 name: Minecraft Java Server
 homepage: https://minecraft.gamepedia.com/Java_Edition
 logo: images/minecraft-logo.png
+baseUrl: https://raw.githubusercontent.com/reclaimhosting/minecraft-java-jps/master
 
 categories: 
 - apps/games
@@ -19,10 +20,20 @@ nodes:
   image: itzg/minecraft-server
   env:
     EULA: TRUE
+    MOTD: Minecraft powered by Reclaim Cloud
   displayName: Minecraft Server
   
 skipNodeEmails: true
 
+onInstall
+  executeScript
+    type: js
+    script: https://raw.githubusercontent.com/reclaimhosting/minecraft-java-jps/master/scripts/addEndpoint.js
+    params
+      nodeGroup: cp
+      name: Minecraft
+      port: 25565
+      
 success: | 
   **Etherpad Server**: [https://${env.domain}/](https://${env.domain}/)  
   
