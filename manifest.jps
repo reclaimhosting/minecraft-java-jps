@@ -5,6 +5,9 @@ homepage: https://minecraft.gamepedia.com/Java_Edition
 logo: images/minecraft-logo.png
 baseUrl: https://raw.githubusercontent.com/reclaimhosting/minecraft-java-jps/master
 
+globals:
+  script: ${baseUrl}/scripts/addEndpoint.js
+
 categories: 
 - apps/games
 - apps/popular
@@ -25,16 +28,9 @@ nodes:
   
 skipNodeEmails: true
 
-onInstall
-  executeScript
-    type: js
-    script: https://raw.githubusercontent.com/reclaimhosting/minecraft-java-jps/master/scripts/addEndpoint.js
-    params
-      nodeGroup: cp
-      name: Minecraft
-      port: 25565
-      
-success: | 
-  **Etherpad Server**: [https://${env.domain}/](https://${env.domain}/)  
-  
-  It may take several minutes for your server to be ready.
+onInstall:
+- script: ${globals.script}
+  params:
+    nodeGroup: cp
+    name: Minecraft
+    port: 25565
