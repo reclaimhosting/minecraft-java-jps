@@ -1,0 +1,29 @@
+type: install
+id: minecraft-java
+name: Minecraft Java Server
+homepage: https://minecraft.gamepedia.com/Java_Edition
+logo: images/minecraft-logo.png
+
+categories: 
+- apps/games
+- apps/popular
+
+description: 
+  text: Minecraft servers allow players to play online or via a local area network with other people.
+
+nodes:
+  nodeType: docker
+  nodeGroup: cp
+  fixedCloudlets: 4
+  flexibleCloudlets: 8
+  image: itzg/minecraft-server
+  env:
+    EULA: TRUE
+  displayName: Minecraft Server
+  
+skipNodeEmails: true
+
+success: | 
+  **Etherpad Server**: [https://${env.domain}/](https://${env.domain}/)  
+  
+  It may take several minutes for your server to be ready.
