@@ -19,7 +19,7 @@ nodes:
   nodeType: docker
   nodeGroup: cp
   fixedCloudlets: 4
-  flexibleCloudlets: 8
+  flexibleCloudlets: 16
   image: itzg/minecraft-server
   env:
     EULA: TRUE
